@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.result {
+    border:1px solid grey;
+    padding:10px;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#button1").click(function(){
+        $.ajax({url: "https://mydevhost.com/userStatus.json", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
+	
+	$("#button2").click(function(){
+        $.ajax({url: "https://mydevhost.com/signin", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
+});
+</script>
+</head>
+<body>
+
+<div id="div1"><h2>Test CORS on orcid code</h2></div>
+
+<button id="button1">Test userStatus.json</button>
+<button id="button2">Test getting the signin page</button>
+
+<br />
+<br />
+
+<div class="result">
+	<div id="status"></div>
+	<div id="result"></div>
+<div>
+
+</body>
+</html>
