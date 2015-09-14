@@ -11,7 +11,7 @@
 <script>
 $(document).ready(function(){
     $("#button1").click(function(){
-        $.ajax({url: "https://mydevhost.com/userStatus.json", 
+        $.ajax({url: "https://other.orcid.org/userStatus.json", 
 		success: function(result){
             $("#status").html("User status replied ok!");
 			$("#result").html(result);
@@ -23,7 +23,7 @@ $(document).ready(function(){
     });
 	
 	$("#button2").click(function(){
-        $.ajax({url: "https://mydevhost.com/signin", 
+        $.ajax({url: "https://other.orcid.org/signin", 
 		success: function(result){
             $("#status").html("User status replied ok!");
 			$("#result").html(result);
