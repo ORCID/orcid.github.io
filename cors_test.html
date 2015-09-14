@@ -33,6 +33,18 @@ $(document).ready(function(){
 			$("#result").html(result);
 		}});
     });
+	
+	$("#button3").click(function(){
+        $.ajax({url: "https://other.orcid.org/public/group/orcid-123", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
 });
 </script>
 </head>
@@ -42,6 +54,7 @@ $(document).ready(function(){
 
 <button id="button1">Test userStatus.json</button>
 <button id="button2">Test getting the signin page</button>
+<button id="button3">Test getting group id</button>
 
 <br />
 <br />
