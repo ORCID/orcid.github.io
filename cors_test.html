@@ -45,6 +45,42 @@ $(document).ready(function(){
 			$("#result").html(result);
 		}});
     });
+	
+	$("#button4").click(function(){
+        $.ajax({url: "https://other.orcid.org/public_widgets/0000-0000-0000-0000/ORCID_HASH/info.json", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
+	
+	$("#button5").click(function(){
+        $.ajax({url: "https://other.orcid.org/public_widgets/0000-0000-0000-0000/info.json", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
+	
+	$("#button6").click(function(){
+        $.ajax({url: "https://other.orcid.org/public_widgets/this-is-a-test/info.json", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
 });
 </script>
 </head>
@@ -55,7 +91,9 @@ $(document).ready(function(){
 <button id="button1">Test userStatus.json</button>
 <button id="button2">Test getting the signin page</button>
 <button id="button3">Test getting group id</button>
-
+<button id="button4">Test valid public widget</button>
+<button id="button5">Test invalid widget 1</button>
+<button id="button6">Test invalid widget 2</button>
 <br />
 <br />
 
