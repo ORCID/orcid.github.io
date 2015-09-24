@@ -81,6 +81,18 @@ $(document).ready(function(){
 			$("#result").html(result);
 		}});
     });
+	
+	$("#button7").click(function(){
+        $.ajax({url: "https://pub.other.orcid.org/search/orcid-bio/?q=orcid:0000-0000-0000-0000", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
 });
 </script>
 </head>
@@ -94,6 +106,7 @@ $(document).ready(function(){
 <button id="button4">Test valid public widget</button>
 <button id="button5">Test invalid widget 1</button>
 <button id="button6">Test invalid widget 2</button>
+<button id="button7">Test public search</button>
 <br />
 <br />
 
