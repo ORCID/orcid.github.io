@@ -83,7 +83,7 @@ $(document).ready(function(){
     });
 	
 	$("#button7").click(function(){
-        $.ajax({url: "https://pub.other.orcid.org/search/orcid-bio/?q=orcid:0000-0000-0000-0000", 
+        $.ajax({url: "http://pub.orcid.org/search/orcid-bio/?q=orcid:0000-0002-7869-831X", 
 		success: function(result){
             $("#status").html("User status replied ok!");
 			$("#result").html(result);
@@ -93,6 +93,8 @@ $(document).ready(function(){
 			$("#result").html(result);
 		}});
     });
+	
+	
 });
 </script>
 </head>
@@ -106,7 +108,7 @@ $(document).ready(function(){
 <button id="button4">Test valid public widget</button>
 <button id="button5">Test invalid widget 1</button>
 <button id="button6">Test invalid widget 2</button>
-<button id="button7">Test public search</button>
+<button id="button7">Test public search on prod</button>
 <br />
 <br />
 
