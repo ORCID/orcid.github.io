@@ -5,10 +5,8 @@
     <script>
         $.ajax({
             url: 'https://sandbox.orcid.org/userStatus.json?logUserOut=true',
-			xhrFields: {
-                withCredentials: true, 
-                crossDomain: true
- 		    },
+			dataType: 'jsonp'
+            },
             success: function(result,status,xhr) {
                 alert("Logged In: " + result.loggedIn);
             },
