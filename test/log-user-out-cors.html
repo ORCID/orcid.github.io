@@ -6,8 +6,7 @@
         $.ajax({
             url: 'https://sandbox.orcid.org/userStatus.json?logUserOut=true',
 			xhrFields: {
-                // it's well documented that Query doesn't support with credentails correctly
-				//withCredentials: true 
+                withCredentials: true, 
                 crossDomain: true
  		    },
             success: function(result,status,xhr) {
