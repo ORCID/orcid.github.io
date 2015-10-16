@@ -93,7 +93,30 @@ $(document).ready(function(){
 			$("#result").html(result);
 		}});
     });
-	
+
+	$("#button8").click(function(){
+        $.ajax({url: "http://www.testorcid.org/userStatus.json", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });	
+
+	$("#button9").click(function(){
+        $.ajax({url: "https://www.testorcid.org/public_widgets/0000-0000-0000-0000/info.json", 
+		success: function(result){
+            $("#status").html("User status replied ok!");
+			$("#result").html(result);
+        }, 
+		error: function(result){
+			$("#status").html("Error!");
+			$("#result").html(result);
+		}});
+    });
 	
 });
 </script>
@@ -109,6 +132,8 @@ $(document).ready(function(){
 <button id="button5">Test invalid widget 1</button>
 <button id="button6">Test invalid widget 2</button>
 <button id="button7">Test public search on prod</button> 
+<button id="button8">Test invalid userStatus.json</button> 
+<button id="button9">Test invalid widget 3</button> 
 <br />
 <br />
 
