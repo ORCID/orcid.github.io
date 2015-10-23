@@ -27,7 +27,7 @@ function openImportWizardUrl() {
     var win = window.open(url, "_target", "toolbar=no, scrollbars=yes, width=500, height=600, top=500, left=500");
     
     setTimeout( function() {
-        if(!url) {
+        if(!win || win.outerHeight === 0) {
             //First Checking Condition Works For IE & Firefox
             //Second Checking Condition Works For Chrome
             window.location.href = url;
