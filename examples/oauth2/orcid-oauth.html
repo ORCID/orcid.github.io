@@ -1,0 +1,38 @@
+<!--
+ * =============================================================================
+ *
+ * ORCID (R) Open Source
+ * http://orcid.org
+ *
+ * Copyright (c) 2012-2014 ORCID, Inc.
+ * Licensed under an MIT-Style License (MIT)
+ * http://orcid.org/open-source-license
+ *
+ * This copyright and license information (including a link to the full license)
+ * shall be included in its entirety in all copies or substantial portion of
+ * the software.
+ *
+ * =============================================================================
+-->
+
+
+<button id="connect-orcid-button" onclick="openImportWizardUrl(); return false;"><img id="orcid-id-logo" src="http://orcid.org/sites/default/files/images/orcid_16x16.png" width='16' height='16' alt="ORCID logo"/> Create or Connect your ORCID iD</button>
+
+<script>
+
+function openImportWizardUrl() {
+	
+	var url = 'https://sandbox.orcid.org/oauth/authorize?client_id=0000-0002-1223-3173&response_type=code&scope=%2Fauthenticate&redirect_uri=http%3A%2F%2Forcid.github.io%2Fexamples%2Foauth2%2Fredirect.html&show_login=true&state=TjtL8bFK5yEz0gFG'; 
+
+    var win = window.open(url, "_target", "toolbar=no, scrollbars=yes, width=500, height=600, top=500, left=500");
+    
+    setTimeout( function() {
+        if(!win || win.outerHeight === 0) {
+            //First Checking Condition Works For IE & Firefox
+            //Second Checking Condition Works For Chrome
+            window.location.href = $url;
+        }
+    }, 250);
+};
+
+</script>
