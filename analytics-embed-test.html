@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Embed API Demo</title>
+</head>
+<body>
+
+  <h1>Wellcome Trust</h1>
+
+<!-- Create containing elements. -->
+
+<section id="auth-button"></section>
+
+<h2>Total New Registrations</h2>
+<section id="totalNewRegistations"></section>
+
+<h2>Total Integration Users</h2>
+<section id="totalIntegrationUsers"></section>
+
+<h2>Total Events</h2>
+<section id="timeline"></section>
+
+<h2>Actions Taken by Users</h2>
+<section id="actionsTakenByUsers"></section>
+
+<h2>Users by Country</h2>
+<section id="usersByCountry"></section>
+
+
+<!-- Load Google Analytics library. -->
+
+<script>
+(function(w,d,s,g,js,fjs){
+  g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(cb){this.q.push(cb)}};
+  js=d.createElement(s);fjs=d.getElementsByTagName(s)[0];
+  js.src='https://apis.google.com/js/platform.js';
+  fjs.parentNode.insertBefore(js,fjs);js.onload=function(){g.load('analytics')};
+}(window,document,'script'));
+</script>
+
+<script>
+gapi.analytics.ready(function() {
+
+  // Authorize the user.
+
+  var CLIENT_ID = '615928626966-uvas9c0pqbmq1mkprok48tatb00atdf7.apps.googleusercontent.com';
+
+  gapi.analytics.auth.authorize({
+    container: 'auth-button',
+    clientid: CLIENT_ID,
+  });
+
+  // Step 4: Create the view selector.
+
+//var viewSelector = new gapi.analytics.ViewSelector({
+    //container: 'view-selector'
+  //});
+
+  // Query total new registrations
+
+    var totalNewRegistations = new gapi.analytics.googleCharts.DataChart({
+    //reportType: 'ga',
+    query: {
+      'ids': 'ga:64908454',
+      'metrics': 'ga:users',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'filters': 'ga:eventLabel=@wellcome;ga:eventAction==New-Registration'
+
+    },
+    chart: {
+      type: 'TABLE',
+      container: 'totalNewRegistations'
+    }
+  });
+
+  totalNewRegistations.execute();
+
+ // Query total integration users
+
+    var totalIntegrationUsers = new gapi.analytics.googleCharts.DataChart({
+    //reportType: 'ga',
+    query: {
+      'ids': 'ga:64908454',
+      'metrics': 'ga:users',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'filters': 'ga:eventLabel=@wellcome'
+
+    },
+    chart: {
+      type: 'TABLE',
+      container: 'totalIntegrationUsers'
+    }
+  });
+
+  totalIntegrationUsers.execute();
+
+// Timeline chart - integration users by day
+  var timeline = new gapi.analytics.googleCharts.DataChart({
+    //reportType: 'ga',
+    query: {
+      'ids': 'ga:64908454',
+      'dimensions': 'ga:day',
+      'metrics': 'ga:users',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'filters': 'ga:eventLabel=@wellcome;ga:eventAction!@Submit'
+
+    },
+    chart: {
+      type: 'LINE',
+      container: 'timeline'
+    }
+  });
+
+  timeline.execute();
+
+  // Table - integrations actions by type
+
+    var actionsTakenByUsers = new gapi.analytics.googleCharts.DataChart({
+    //reportType: 'ga',
+    query: {
+      'ids': 'ga:64908454',
+      'dimensions': 'ga:eventAction',
+      'metrics': 'ga:totalEvents,ga:uniqueEvents',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'filters': 'ga:eventLabel=@wellcome;ga:eventAction!@Submit'
+
+    },
+    chart: {
+      type: 'TABLE',
+      container: 'actionsTakenByUsers'
+    }
+  });
+
+  actionsTakenByUsers.execute();
+
+  // Table - integration users by country
+
+  var usersByCountry = new gapi.analytics.googleCharts.DataChart({
+    //reportType: 'ga',
+    query: {
+      'ids': 'ga:64908454',
+      'dimensions': 'ga:country',
+      'metrics': 'ga:users',
+      'start-date': '30daysAgo',
+      'end-date': 'yesterday',
+      'filters': 'ga:eventLabel=@wellcome'
+
+    },
+    chart: {
+      type: 'TABLE',
+      container: 'usersByCountry'
+    }
+  });
+
+  usersByCountry.execute();
+
+});
+</script>
+</body>
+</html>

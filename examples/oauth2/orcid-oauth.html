@@ -1,0 +1,58 @@
+<!--
+ * =============================================================================
+ *
+ * ORCID (R) Open Source
+ * http://orcid.org
+ *
+ * Copyright (c) 2012-2014 ORCID, Inc.
+ * Licensed under an MIT-Style License (MIT)
+ * http://orcid.org/open-source-license
+ *
+ * This copyright and license information (including a link to the full license)
+ * shall be included in its entirety in all copies or substantial portion of
+ * the software.
+ *
+ * =============================================================================
+-->
+
+<html>
+
+<!--
+Example showing how to initiate ORCID OAuth2 process using a popup window with a fallback for cases where a popup blocker is enabled.
+Tested in Firefox, Chrome, and IE11
+
+For more guidelines on presenting the ORCID OAuth2 screen in your application, see https://members.orcid.org/api/presenting-oauth
+-->
+
+
+<!--prompt the user to create/connect an ORCID iD using a button or link-->
+<button id="connect-orcid-button" onclick="openORCIDOauth(); return false;">
+    <img id="orcid-id-logo" src="http://orcid.org/sites/default/files/images/orcid_16x16.png" width='16' height='16' alt="ORCID logo"/>
+    Create or Connect your ORCID iD
+</button>
+
+
+<!--open the oauth2 screen in a popup if possible or open in same window if popup does not open-->
+<script>
+
+function openORCIDOauth() {
+
+	//URL to get an oauth2 authorization code for the current user  - see param reference at http://members.orcid.org/api/get-oauthauthorize
+    //local variable for demo purposes - your URL is likely defined elsewhere as a global
+	var url = 'https://sandbox.orcid.org/oauth/authorize?client_id=0000-0002-1223-3173&response_type=code&scope=%2Fauthenticate&redirect_uri=http%3A%2F%2Forcid.github.io%2Fexamples%2Foauth2%2Fredirect.html&show_login=true&state=TjtL8bFK5yEz0gFG'; 
+
+    //open the orcid oauth2 screen in a popup 
+    var win = window.open(url, "_target", "toolbar=no, scrollbars=yes, width=500, height=600, top=500, left=500");
+
+    //if popup takes too long to load, popup blocker likely enabled - load oauth screen in same window instead
+    setTimeout( function() {
+        if(!win || win.outerHeight === 0) {
+            //first condition check works for IE & Firefox
+            //second confition check works for Chrome
+            window.location.href = url;
+        }
+    }, 250);
+};
+
+</script>
+</html>
