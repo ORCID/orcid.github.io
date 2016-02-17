@@ -4,7 +4,7 @@
 	<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
     <script>
         $.ajax({
-            url: 'https://sandbox.orcid.org/userStatuslskjdf.json?logUserOut=true',
+            url: 'https://sandbox.orcid.org/userStatus.json?logUserOut=true',
             dataType: 'jsonp',
             success: function(result,status,xhr) {
                 alert("Logged In: " + result.loggedIn);
