@@ -127,4 +127,7 @@ body {
 .work .dl-horizontal dd{
   margin-left: 100px;
 }
+.download, .view{
+  margin-top: 1em;
+}
 
