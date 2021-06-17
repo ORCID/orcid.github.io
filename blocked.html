@@ -4,6 +4,7 @@
    <meta charset="utf-8">
     <title>ORCID: Your request has been blocked</title>
     <style>
+            /* Structure */
             html {
                 background-color: #FFFFFF;
                 width: 100%;
@@ -11,52 +12,58 @@
             }
 
             body {
-                font-family: 'Plaster', cursive; 
-                color: #000000;
-                margin: 0px;
-                padding: 0px;
-                border: 0px;
+                color: rgba(0,0,0,0.9);
+                font-family: Arial, sans-serif;
+                font-size: 1em;               
+                line-height: 1.5em; 
+                margin: 0;
+                padding: 0;
+                text-align: center;
                 width: 100%;
-                height: 100%;
-                font-size: 1.5em;               
-                text-align:center;
             }
 
-            a:link {color: #a6ce39;}      /* unvisited link */
-            a:visited {color: #a6ce39;}  /* visited link */
-            a:hover {color: #a6ce39;}  /* mouse over link */
-            a:active {color: #a6ce39;}  /* selected link */
+            /* Links */
+            a:link {
+                color: #2E7F9F;
+            }
             
+            a:visited {
+                color: #003449;
+            }
+            
+            a:hover {
+                color: #7FAA26;
+            }
+            
+            a:active {
+                color: #a6ce39;
+            }
+
+            /* Typography */
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            /* Panels */
             #info {                
-                margin-right: auto;              
-                margin-left: auto;                
-                padding: 1em;
-                font-family: 'Karla', sans-serif;                
-                width:640px;               
-                background-color: #939598;                
-                color: #FFFFFF;                
+                margin: 0 auto;             
+                padding: 1.5em 2em;
+                width: 640px;               
                 text-align: left;                
-                -moz-border-radius: 20px;
-                border-radius: 20px;
+                border-radius: 8px;
+                border: 2px solid #a6ce39;
             }
-            
-            #content {             
-              margin-right: auto;             
-              margin-left: auto;
-            }
-
         </style>
 </head>
 <body>    
-    <div id="content">                        
-        <img src="/img/warn.png" alt="Warning">
+    <main>
+        <img src="img/warning.png" alt="Warning">
         <div id="info">
-            We're sorry, you have been blocked! This usually happens when your application exceeded our <a href="https://info.orcid.org/faq/what-are-the-api-limits/" target="_blank">rate limiting</a> for an extended period of time. 
-            <br><br>
-            If you need immediate assistance, please contact support at <a href="mailto:support@orcid.org" target="_blank">support@orcid.org</a> or open at ticket at <a href="https://support.orcid.org/hc/en-us" target="_blank">https://support.orcid.org/hc/en-us</a>.
+            <h1>We're sorry, you have been blocked!</h1>
+            <p>This usually happens when your application exceeded our <a href="https://info.orcid.org/faq/what-are-the-api-limits/" target="_blank">rate limiting</a> for an extended period of time.</p>
+            <p>If you need immediate assistance, please contact support at <a href="mailto:support@orcid.org" target="_blank">support@orcid.org</a> or open at ticket at <a href="https://support.orcid.org/hc/en-us" target="_blank">https://support.orcid.org/hc/en-us</a>.</p>
         </div>
-    </div> 
- 
+    </main>                       
     <h2>::GEO::</h2>
 </body>
 </html>
