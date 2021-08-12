@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script>
-        jQuery.get(
-            "https://dev.orcid.org/userStatus.json?logUserOut=true",
-            function(responseText){
-                alert( responseText);
-	    },
-            "jsonp"
-        );
-    </script>        
+  <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+  <script>
+    $.ajax({
+        url: 'https://dev.orcid.org/userStatus.json?logUserOut=true',
+        type: "get",
+        crossDomain: true,            
+        dataType: 'json',
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function(result,status,xhr) {
+            alert("Logged In: " + result.loggedIn);
+        },
+        error: function (xhr, status, error) {
+            alert(status);
+        }
+    });
+  </script>
 </head>
 
 <body>    
