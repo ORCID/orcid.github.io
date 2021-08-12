@@ -5,8 +5,9 @@
     <script>
         $.ajax({
             url: 'https://dev.orcid.org/userStatus.json?logUserOut=true',
-            dataType: 'json',
-            xhrFields: { withCredentials: true },
+            type: 'get',
+            dataType: 'jsonp', 
+            jsonpCallback: "handleCallback",	 
             success: function(result,status,xhr) {
                 alert("Logged In: " + result.loggedIn);
             },
