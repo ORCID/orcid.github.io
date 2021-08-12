@@ -7,7 +7,8 @@
             url: 'https://dev.orcid.org/userStatus.json?logUserOut=true',
             type: 'get',
             dataType: 'jsonp', 
-            jsonpCallback: "handleCallback",	 
+            jsonpCallback: "handleCallback",
+            xhrFields: { withCredentials: true },
             success: function(result,status,xhr) {
                 alert("Logged In: " + result.loggedIn);
             },
